@@ -50,7 +50,6 @@ class CaseBonus extends Case {
         j.modifierScore(nbr_Points);
 
     }
-
 }
 class CaseMalus extends Case {
     public CaseMalus ()
@@ -164,15 +163,12 @@ class CaseFin extends Case {
             nbr_Points= 0;
         }
     }
-    public static void  fin(Joeur j ) {
-        j.
-    }
     public void Action (Joeur j)  
     {
         if (gagner==true)
         {
             System.out.println("Vous Avez Gagner Filistation !!!");
-            fin();
+            j.fin();
         }
         else{
             j.modifierCase(Nb_Case);
@@ -219,6 +215,22 @@ class Joeur {
     private Utilisateur user ; 
     public Joeur (Utilisateur user){
         this.user=user; 
+    }
+    public  void  fin( ) { //il reste le traitement de le plus grand score pour tous les users 
+        if(this.ScoreActuel>this.user.get_meilleur_score())
+        {
+            System.out.println("Vous avez battu votre meilleur score \nle nouveau meilleur score est "+this.ScoreActuel);
+            user.set_meilleur_score(this.ScoreActuel);
+        }
+        else 
+        {
+            System.out.println("votre score de ce Partie est : "+this.ScoreActuel+"\n Votre meuilleur score est : "+this.user.get_meilleur_score());
+            
+        }
+    }
+    public long getmeilleur_Score()
+    {
+        return this.user.get_meilleur_score();
     }
     public void modifierScore(long val )
     {
