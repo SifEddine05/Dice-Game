@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.scene.control.Label;
+
 abstract public class Case {
     protected String Color;
     protected int Nb_Case;
@@ -12,5 +14,5 @@ abstract public class Case {
     {
         return  this.Color ;
     }
-    abstract void Action(Joeur j);
+    public abstract String Action(Joeur j );
 }

@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.scene.control.Label;
+
 public class CaseDepart extends Case {
     public CaseDepart() {
         Color = "Yellow";
@@ -8,10 +10,11 @@ public class CaseDepart extends Case {
 
     }
 
-    public void Action(Joeur j) {
+    public String Action(Joeur j) {
         afficher();
         j.modifierScore(nbr_Points);
         j.modifierCase(Nb_Case);
+        return ("Relancer le De") ;
         // System.out.println("avancer de "+val+" case en avant");
     }
 }

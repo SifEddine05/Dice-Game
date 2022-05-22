@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.scene.control.Label;
+
 public class CaseImage extends CaseQuestion {
     public CaseImage() {
         // la definition de fichier
@@ -14,14 +16,17 @@ public class CaseImage extends CaseQuestion {
         Nb_Case = 0;
     }
 
-    public void Action(Joeur j) {
+    public String  Action(Joeur j) {
         afficher();
 
         j.modifierCase(Nb_Case);
-        if (Nb_Case > 0) {
-            System.out.println("Avancer " + Nb_Case + " en avant");
-        }
         j.modifierScore(nbr_Points);
+
+        if (Nb_Case > 0) {
+            return ("Avancer " + Nb_Case + " en avant");
+            //System.out.println("Avancer " + Nb_Case + " en avant");
+        }
+        return ("Relancer le De") ;
     }
 
     public void genererQuestion() {

@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.scene.control.Label;
+
 public class CaseMalus extends Case {
     public CaseMalus() {
         Color = "Red";
@@ -7,12 +9,14 @@ public class CaseMalus extends Case {
         nbr_Points = -10;
     }
 
-    public void Action(Joeur j) {
+    public String  Action(Joeur j) {
         afficher();
 
         j.modifierCase(Nb_Case);
-        System.out.println("Reculer " + Nb_Case + " en ariere");
         j.modifierScore(nbr_Points);
+
+        return("Reculer " + Nb_Case + " en ariere");
+      //  System.out.println("Reculer " + Nb_Case + " en ariere");
 
     }
 }

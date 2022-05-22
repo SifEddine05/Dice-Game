@@ -7,13 +7,21 @@ public class Partie {
     private Joeur joeur;
     static long meilleure_score;
 
-    public Partie(Joeur j) {
+    public Partie(Joeur j ) {
         this.joeur = j;
-        grille.Charger_plateau();
-        grille.generer_plateau_randomly();
+        this.grille.Charger_plateau();
+        this.grille.generer_plateau_randomly();
     }
-
-    public int lancer_De() {
+    public Joeur getJoeur()
+    {
+        return this.joeur ;
+    }
+    public Case [] getPlateau ()
+    {
+        return  this.grille.getPlateau() ;
+    }
+   public int lancer_De() {
+        De De = new De() ;
         int a = De.De1();
         int b = De.De2();
         System.out.println("lancer le D1 " + a);
@@ -34,7 +42,7 @@ public class Partie {
         }
     }
 
-    public void deplacer() // lancer le De et faire l'action de la case une seule fois
+    /*public void deplacer() // lancer le De et faire l'action de la case une seule fois
     {
 
         int val = lancer_De();
@@ -59,13 +67,21 @@ public class Partie {
             System.out.println("Cliquer sur la case :");
             valjoeur = sc.nextInt();
         }
+    }*/
+    public void setNum_case_act(int val)
+    {
+        this.num_case_act=val ;
+    }
+    public int getNum_case_act ()
+    {
+        return this.num_case_act;
     }
 
-    public void jouer() {
-        while (num_case_act != 99) {
+   /* public void jouer() {
+      /*  while (num_case_act != 99) {
             deplacer();
-        }
+        }*/
 
     }
 
-}
+

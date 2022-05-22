@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.scene.control.Label;
+
 public class CaseFin extends Case {
     private Boolean gagner = false;
 
@@ -20,17 +22,19 @@ public class CaseFin extends Case {
         Color = "Black";
     }
 
-    public void Action(Joeur j) {
+    public String Action(Joeur j) {
         afficher();
-
-        System.out.println("Vous Avez Gagner Filistation !!!");
+       // return ("Vous Avez Gagner Filistation !!!");
+       // System.out.println("Vous Avez Gagner Filistation !!!");
         if (j.getScoreActuel() > j.getmeilleur_Score()) {
-            System.out.println(
-                    "Vous avez battu votre meilleur score \nle nouveau meilleur score est " + j.getScoreActuel());
             j.set_meilleur_score(j.getScoreActuel());
 
+            return ("Vous avez battu votre meilleur score \nle nouveau meilleur score est " + j.getScoreActuel());
+            //System.out.println(
+                   // "Vous avez battu votre meilleur score \nle nouveau meilleur score est " + j.getScoreActuel());
+
         } else {
-            System.out.println("votre score de ce Partie est : " + j.getCaseActuel() + "\n Votre meuilleur score est : "
+            return ("votre score de ce Partie est : " + j.getCaseActuel() + "\n Votre meuilleur score est : "
                     + j.getmeilleur_Score());
 
         }
