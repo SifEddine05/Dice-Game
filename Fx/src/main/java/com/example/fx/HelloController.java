@@ -72,6 +72,9 @@ public class HelloController {
     private Label Info3 = new Label();
     @FXML
     Label Info = new Label();
+    @FXML
+    Label Info4 = new Label();
+
     private Partie p;
 
 
@@ -84,7 +87,8 @@ public class HelloController {
             p.setNum_case_act(valjoeur);
             return true;
         } else {
-            Info.setText("la case est errone cliquer sur la case correct");
+            Info4.setVisible(true);
+            Info4.setText("la case est errone cliquer sur la case correct");
             //  System.out.println("la case est errone cliquer sur une autre case ");
 
             return false;
@@ -104,6 +108,7 @@ public class HelloController {
         if (Test(valjoeur)) {
             String ss = Plateau[j.getCaseActuel()].Action(j);
             Info.setText(ss);
+            Info4.setVisible(false);
             Info3.setText("La case Actuel est : "+j.getCaseActuel());
             Info2.setText("Votre Score est : "+j.getScoreActuel());
         }
