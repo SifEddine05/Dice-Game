@@ -40,24 +40,23 @@ package com.example.fx;
 
 import Classes.*;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class HelloController {
     private De De = new De();
+    @FXML
+    private Label NumQues ;
     @FXML
     private GridPane gridpane;
     @FXML
@@ -71,11 +70,135 @@ public class HelloController {
     @FXML
     private Label Info3 = new Label();
     @FXML
-    Label Info = new Label();
+   private Label Info = new Label();
     @FXML
-    Label Info4 = new Label();
+    private  Label Info4 = new Label();
+
+    @FXML
+    private  Label Question ;
+    @FXML
+    private RadioButton  sug1 ;
+    @FXML
+    private RadioButton sug2  ;
+    @FXML
+    private RadioButton  sug3;
+    @FXML
+  private   RadioButton  sug4  ;
+
+    @FXML
+   private Label Aswr ;
+    @FXML
+    private  Button Sub  ;
+    private static Boolean Test ;
+    public static void setTest(Boolean b)
+    {
+        Test= b ;
+    }
+
+
+    public Partie getPartie() {
+        return p;
+    }
 
     private Partie p;
+   private String Reponse ;
+
+
+
+
+
+    public boolean openNewWindow (){
+
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("Question.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            QuestionController questionController = fxmlLoader.getController();
+            questionController.setReponse(Reponse);
+            questionController.setP(p);
+          questionController.genererQuestion();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root1));
+            stage.showAndWait();
+            return true ;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    /*@FXML
+    void Submit(ActionEvent event) {
+        int cs = p.getNum_case_act() ;
+       Case plateau [] = p.getPlateau() ;
+        if(sug1.isSelected())
+        {
+
+            if( sug1.getText()!=Reponse )
+            {
+                Aswr.setText("Votre Reponse est Fausse");
+                ((CaseDefinition)plateau[cs]).SetLose();
+            }
+            else
+            {
+                Aswr.setText("Votre Reponse est Juste");
+            }
+            Aswr.setVisible(true);
+
+        } else if (sug2.isSelected()) {
+            if( sug2.getText()!=Reponse )
+            {
+                Aswr.setText("Votre Reponse est Fausse");
+                ((CaseDefinition)plateau[cs]).SetLose();
+            }
+            else
+            {
+                Aswr.setText("Votre Reponse est Juste");
+            }
+            Aswr.setVisible(true);
+
+        } else if (sug3.isSelected()) {
+            if( sug3.getText()!=Reponse )
+            {
+                Aswr.setText("Votre Reponse est Fausse");
+                ((CaseDefinition)plateau[cs]).SetLose();
+            }
+            else
+            {
+                Aswr.setText("Votre Reponse est Juste");
+            }
+            Aswr.setVisible(true);
+        } else if (sug4.isSelected()) {
+            if( sug4.getText()!=Reponse )
+            {
+                Aswr.setText("Votre Reponse est Fausse");
+                ((CaseDefinition)plateau[cs]).SetLose();
+            }
+            else
+            {
+                Aswr.setText("Votre Reponse est Juste");
+            }
+            Aswr.setVisible(true);
+        }
+        else
+        {
+            Aswr.setText("choissez  une reponse s'il vous plait ");
+            Aswr.setVisible(true);
+        }
+        /*try {
+            Thread.sleep(400);
+        } catch (InterruptedException e) {
+            //throw new RuntimeException(e);
+            System.out.println("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+        }*/
+     /*   Stage stg  = (Stage) Sub.getScene().getWindow() ;
+        stg.close();
+
+
+
+    }*/
+
 
 
     public Boolean Test(int valjoeur) // tester si le joeur aller a la case vrai
@@ -103,25 +226,56 @@ public class HelloController {
         System.out.println(node instanceof Button); //prints true. demonstrates the source is a Button
         //since the returned object is a Button you can cast it to one
         Button b = (Button) node;
+       // boolean go =false ;
        // System.out.println(b.getText());
         int valjoeur = Integer.parseInt(b.getText());
-        if (Test(valjoeur)) {
-            String ss = Plateau[j.getCaseActuel()].Action(j);
-            Info.setText(ss);
-            Info4.setVisible(false);
-            Info3.setText("La case Actuel est : "+j.getCaseActuel());
-            Info2.setText("Votre Score est : "+j.getScoreActuel());
-        }
-        if(Info.getText()=="Relancer le De")
-        {
-            Lancer_De.setDisable(false);
-        }
+
+            if (Test(valjoeur) ) {
+                if(Plateau[valjoeur].getColor()=="blue")
+                {
+
+
+                    openNewWindow();
+                        String ss = Plateau[j.getCaseActuel()].Action(j);
+                        Info.setText(ss);
+                        Info4.setVisible(false);
+                        Info3.setText("La case Actuel est : "+j.getCaseActuel());
+                        Info2.setText("Votre Score est : "+j.getScoreActuel());
+                        if(Test)
+                        {
+                            Info4.setVisible(true);
+                            Info4.setText("Votre Reponse est juste");
+                        }
+                        else
+                        {
+                            Info4.setVisible(true);
+                            Info4.setText("Votre Reponse est fausse");
+                        }
+
+                }
+                else
+                {
+                    String ss = Plateau[j.getCaseActuel()].Action(j);
+                    Info.setText(ss);
+                    Info4.setVisible(false);
+                    Info3.setText("La case Actuel est : "+j.getCaseActuel());
+                    Info2.setText("Votre Score est : "+j.getScoreActuel());
+                }
+
+            }
+            if(Info.getText()=="Relancer le De")
+            {
+                Lancer_De.setDisable(false);
+            }
+       // }
+
 
     }
 
 
     public void lancer_De(ActionEvent event) {
         Lancer_De.setDisable(true);
+        Info4.setVisible(false);
         Thread thread = new Thread() {
             public void run() {
                 /*  System.out.println("Thread Running");*/
@@ -311,6 +465,7 @@ public class HelloController {
     }*/
         @FXML
         void demarer (ActionEvent event){
+
         Partie Partie = new Partie(j);
         this.p = Partie;
         Case Plateau[] = Partie.getPlateau();

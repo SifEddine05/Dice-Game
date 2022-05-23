@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fx.QuestionController">
+   <children>
+      <Label fx:id="NumQues" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="124.0" layoutY="30.0" prefHeight="43.0" prefWidth="353.0" text="Question" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label fx:id="Question" layoutX="92.0" layoutY="104.0" prefHeight="43.0" prefWidth="226.0" text="La question">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="Sub" layoutX="269.0" layoutY="293.0" mnemonicParsing="false" onAction="#Submit" text="Submit" />
+      <RadioButton fx:id="sug1" layoutX="145.0" layoutY="191.0" mnemonicParsing="false" text="RadioButton" />
+      <RadioButton fx:id="sug3" layoutX="145.0" layoutY="227.0" mnemonicParsing="false" text="RadioButton" />
+      <RadioButton fx:id="sug2" layoutX="347.0" layoutY="182.0" mnemonicParsing="false" text="RadioButton" />
+      <RadioButton fx:id="sug4" layoutX="347.0" layoutY="227.0" mnemonicParsing="false" text="RadioButton" />
+      <Label fx:id="Aswr" layoutX="110.0" layoutY="333.0" prefHeight="43.0" prefWidth="375.0" />
+   </children>
+</AnchorPane>

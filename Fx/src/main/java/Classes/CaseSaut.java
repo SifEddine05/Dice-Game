@@ -6,7 +6,7 @@ public class CaseSaut extends Case {
     public CaseSaut() {
         Color = "Orange";
         Random rand = new Random(); // instance of random class
-        int random = rand.nextInt(10);
+        int random = rand.nextInt(10)+1;
         int type = rand.nextInt(2) ;
         if (type == 0) {
             Nb_Case = random;

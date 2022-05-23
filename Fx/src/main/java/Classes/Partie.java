@@ -1,5 +1,7 @@
 package Classes;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.util.Scanner;
 public class Partie {
     private Grille grille = new Grille();
@@ -68,6 +70,11 @@ public class Partie {
             valjoeur = sc.nextInt();
         }
     }*/
+
+    public BufferedReader getfile()
+    {
+        return this.grille.getFile();
+    }
     public void setNum_case_act(int val)
     {
         this.num_case_act=val ;
