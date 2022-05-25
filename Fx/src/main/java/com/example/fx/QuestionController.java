@@ -7,13 +7,18 @@ import Classes.Partie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 public class QuestionController {
     /*public QuestionController(Partie p , String Reponse)
@@ -48,6 +53,22 @@ public class QuestionController {
    private Partie p ;
    private String Reponse ;
    private int cpt ;
+
+   @FXML
+   Button del ;
+   @FXML
+   void Delete(ActionEvent event)
+   {
+       String rep="" ;
+       TextField texts[] = new TextField[Reponse.length()];
+       hbox.getChildren().toArray(texts) ;
+       for(int i=0 ; i<Reponse.length() ; i++)
+       {
+           texts[i].setText("");
+           texts[i].setDisable(false);
+       }
+
+   }
 
     @FXML
     void Submit(ActionEvent event) {
@@ -88,6 +109,11 @@ public class QuestionController {
 
     }
     public void genererQuestion() {
+        File file1 = new File("src/main/resources/Img/delete.png") ;
+        ImageView img1 =new ImageView();
+        img1.setImage(new Image(file1.toURI().toString()));
+        del.setGraphic(img1);
+       // del.setStyle("-fx-background-image:url(./src/main/resources/Img/delete.png)");
         BufferedReader file = p.getfile();
         cpt=0;
        // Tst=true ;
@@ -132,11 +158,22 @@ public class QuestionController {
             TextField text = new TextField() ;
             text.setId("char"+i);
             int max=0 ;
+           /* Pattern pattern = Pattern.compile(".{0,1}");
+            TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+                return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+            });
+            text.setTextFormatter(formatter);*/
 
             text.textProperty().addListener((observable ,oldValu , newValue)->{
+                text.setDisable(false);
                 if(newValue.length()>max)
                 {
+                   // text.setText(text.getText().substring(0));
                     text.setDisable(true);
+                    //btn.setOnAction(e -> Action(e));
+                    text.setOnAction(e->{
+                        text.setDisable(false);
+                    });
                     cpt++;
                    // Tst = true ;
                 }
