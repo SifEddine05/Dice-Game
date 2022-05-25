@@ -13,7 +13,6 @@ public class CaseParcours extends Case {
 Label Info2 ;
     public String Action(Joeur j) {
         afficher();
-        //i.setText("sssss");
         j.modifierCase(Nb_Case);
         j.modifierScore(nbr_Points);
         return ("Relancer le De") ;

@@ -44,6 +44,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -52,6 +53,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.File;
 
 public class HelloController {
     private De De = new De();
@@ -90,6 +93,12 @@ public class HelloController {
     @FXML
     private  Button Sub  ;
     private static Boolean Test ;
+    private static Boolean Testimg ;
+    public static void setTestimg(Boolean b)
+    {
+        Testimg= b ;
+    }
+
     public static void setTest(Boolean b)
     {
         Test= b ;
@@ -103,11 +112,35 @@ public class HelloController {
     private Partie p;
    private String Reponse ;
 
+    private int num_case_actuel ;
+    private static  Boolean Fin =false;
+    Alert alert= new Alert(Alert.AlertType.NONE) ;
+    public static void setFin()
+    {
+        Fin=true ;
+    }
+public void openNewwindowImage()
+{
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("Images.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        ImagesController imagesController = fxmlLoader.getController();
+        //questionController.setReponse(Reponse);
+        imagesController.setP(p);
+        imagesController.genererImage();
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(root1));
+        stage.showAndWait();
+        //return true ;
+
+    } catch(Exception e) {
+        e.printStackTrace();
+    }
+}
 
 
-
-
-    public boolean openNewWindow (){
+    public void openNewWindow (){
 
 
         try {
@@ -121,12 +154,12 @@ public class HelloController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root1));
             stage.showAndWait();
-            return true ;
+            //return true ;
 
         } catch(Exception e) {
             e.printStackTrace();
         }
-        return false;
+       // return false;
     }
     /*@FXML
     void Submit(ActionEvent event) {
@@ -203,11 +236,12 @@ public class HelloController {
 
     public Boolean Test(int valjoeur) // tester si le joeur aller a la case vrai
     {
-        int num_case_act = p.getNum_case_act();
+        //num_case_actuel = p.getNum_case_act();
         Joeur joeur = p.getJoeur();
         if (joeur.getCaseActuel() == valjoeur) {
             //set Num caseAct(valJoueur)
             p.setNum_case_act(valjoeur);
+            num_case_actuel=valjoeur ;
             return true;
         } else {
             Info4.setVisible(true);
@@ -219,7 +253,7 @@ public class HelloController {
     }
 
     void Action(ActionEvent e) {
-        int num_case_act = p.getNum_case_act();
+        // num_case_actuel = p.getNum_case_act();
         Case Plateau[] = p.getPlateau();
         Joeur j = p.getJoeur();
         Object node = e.getSource(); //returns the object that generated the event
@@ -239,7 +273,7 @@ public class HelloController {
                         String ss = Plateau[j.getCaseActuel()].Action(j);
                         Info.setText(ss);
                         Info4.setVisible(false);
-                        Info3.setText("La case Actuel est : "+j.getCaseActuel());
+                        Info3.setText("La case Actuel est : "+num_case_actuel);
                         Info2.setText("Votre Score est : "+j.getScoreActuel());
                         if(Test)
                         {
@@ -252,13 +286,50 @@ public class HelloController {
                             Info4.setText("Votre Reponse est fausse");
                         }
 
-                }
-                else
-                {
+                } else if (Plateau[valjoeur].getColor()=="Pink") {
+                    openNewwindowImage();
                     String ss = Plateau[j.getCaseActuel()].Action(j);
                     Info.setText(ss);
                     Info4.setVisible(false);
-                    Info3.setText("La case Actuel est : "+j.getCaseActuel());
+                    Info3.setText("La case Actuel est : "+num_case_actuel);
+                    Info2.setText("Votre Score est : "+j.getScoreActuel());
+                    if(Testimg)
+                    {
+                        Info4.setVisible(true);
+                        Info4.setText("Votre Reponse est juste");
+                    }
+                    else
+                    {
+                        Info4.setVisible(true);
+                        Info4.setText("Votre Reponse est fausse");
+                    }
+                    
+                } else
+                {
+                    String ss = Plateau[j.getCaseActuel()].Action(j);
+                    if (Fin)
+                    {
+                        alert.setTitle("Filistation !!!");
+
+                        if (j.getScoreActuel() > j.getmeilleur_Score()) {
+                            j.set_meilleur_score(j.getScoreActuel());
+                            alert.setContentText("Vous Avez Gagner Filistation !!!\nVous avez battu votre meilleur score \\nle nouveau meilleur score est \" + j.getScoreActuel()");
+                          //  return ("Vous avez battu votre meilleur score \nle nouveau meilleur score est " + j.getScoreActuel());
+                            //System.out.println(
+                            // "Vous avez battu votre meilleur score \nle nouveau meilleur score est " + j.getScoreActuel());
+
+                        } else {
+                            alert.setContentText("Vous Avez Gagner Filistation !!! votre score de ce Partie est : " + j.getCaseActuel() + "\n Votre meuilleur score est : "+ j.getmeilleur_Score());
+                           // return ("votre score de ce Partie est : " + j.getCaseActuel() + "\n Votre meuilleur score est : "
+                                  //  + j.getmeilleur_Score());
+
+                        }
+                    }
+                    Info.setText(ss);
+
+
+                    Info4.setVisible(false);
+                    Info3.setText("La case Actuel est : "+num_case_actuel);
                     Info2.setText("Votre Score est : "+j.getScoreActuel());
                 }
 
@@ -282,16 +353,21 @@ public class HelloController {
 
                 for (int i = 0; i < 15; i++) {
 
-                    /*  File file = new File("D:\\inverted-dice-2.png");*/
+                    /*  File file = new File("D:\\Img2.png");*/
 
                     int nb1 = De.De1();
                     int nb2 = De.De2();
-                    String url1 = String.valueOf(getClass().getResource("inverted-dice-" + nb1 + ".png"));
+                   /* String url1 = String.valueOf(getClass().getResource("inverted-dice-" + nb1 + ".png"));
                     String url2 = String.valueOf(getClass().getResource("inverted-dice-" + nb2 + ".png"));
                     Image img11 = new Image(url1);
-                    Image img22 = new Image(url2);
-                    img1.setImage(img11);
-                    img2.setImage(img22);
+                    Image img22 = new Image(url2);*/
+                   File file = new File("src/main/resources/Img/inverted-dice-" + nb1 + ".png") ;
+                    File file1 = new File("src/main/resources/Img/inverted-dice-" + nb2 + ".png") ;
+                    img1.setImage(new Image(file.toURI().toString()));
+                    img2.setImage(new Image(file1.toURI().toString()));
+
+                   /* img1.setImage(img11);
+                    img2.setImage(img22);*/
                     try {
                         Thread.sleep(50);
                     } catch (InterruptedException e) {
@@ -309,15 +385,29 @@ public class HelloController {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        int num_case_act = p.getNum_case_act();
+        //int num_case_act = p.getNum_case_act();
         Joeur joeur = p.getJoeur();
         int val = De.Som();
         Info.setText("Avancer "+val+" Cases en avant");
-        System.out.println("NumCase"+num_case_act);
+        System.out.println("NumCase"+num_case_actuel);
+        System.out.println("Avancer "+val+" Cases en avant");
        // System.out.println("");
-        if (num_case_act + val > 99) {
+       /* if (num_case_act + val > 99) {
             Info.setText("Reculer " + (joeur.getCaseActuel() + val - 99) + " en arriere");
             val = -(joeur.getCaseActuel() + val - 99);
+        }*/
+        if (num_case_actuel + val > 99) {
+
+            // joeur.modifierCase(-(joeur.getCaseActuel()+val-99));
+            int val2 = 99 - joeur.getCaseActuel();
+            val = -(joeur.getCaseActuel() + val - 99) + val2;
+            // joeur.modifierCase(val2+joeur.getCaseActuel()) ;
+            if (val > 0) {
+                Info.setText("Avancer " + val + " en avant");
+            } else {
+                Info.setText("Recouler " + val + " en arriere");
+            }
+
         }
         joeur.modifierCase(val);
         Lancer_De.setDisable(true);
@@ -466,11 +556,14 @@ public class HelloController {
         @FXML
         void demarer (ActionEvent event){
 
-        Partie Partie = new Partie(j);
+       Partie Partie = new Partie(j);
         this.p = Partie;
+        this.num_case_actuel=p.getNum_case_act();
         Case Plateau[] = Partie.getPlateau();
         CreePlateau(Plateau);
         Lancer_De.setDisable(false);
+        //openNewWindow();
+           // openNewwindowImage();
         //Info.setText("Som" + De.Som());
        // System.out.println("Som" + De.Som());
 

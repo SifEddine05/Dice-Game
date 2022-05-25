@@ -6,18 +6,25 @@ import java.io.IOException;
 
 public class Grille {
     private BufferedReader f = null;
+    private BufferedReader fimg = null ;
 
     public Case plateau[] = new Case[100];
 public  BufferedReader getFile ()
 {
     return this.f ;
 }
+
+    public BufferedReader getFimg() {
+        return this.fimg;
+    }
+
     public void Charger_plateau()// remplir le plateau sequentiellement avec des cases
     {
         // plateau=new Case[100] ;
         try {
             //FileReader(String.valueOf(getClass().getResource("definition.txt"))
-            f = new BufferedReader(new FileReader("/home/sifou/Desktop/Fx/Fx/src/main/resources/com/example/fx/definition.txt"));
+            fimg = new BufferedReader(new FileReader("src/main/resources/Images/image.txt")) ;
+            f = new BufferedReader(new FileReader("src/main/resources/Definitions/definition.txt"));
         } catch (IOException e) {
             System.out.println("l'erreure est : " + e.getStackTrace());
         }

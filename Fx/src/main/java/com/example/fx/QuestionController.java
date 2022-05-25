@@ -2,22 +2,18 @@ package com.example.fx;
 
 import Classes.Case;
 import Classes.CaseDefinition;
+import Classes.CaseImage;
 import Classes.Partie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class QuestionController {
     /*public QuestionController(Partie p , String Reponse)
@@ -43,104 +39,58 @@ public class QuestionController {
 
     @FXML
     private Button Sub;
-
     @FXML
-    private RadioButton sug1;
+    private HBox hbox ;
+    private Boolean Tst = false ;
 
-    @FXML
-    private RadioButton sug2;
-
-    @FXML
-    private RadioButton sug3;
-
-    @FXML
-    private RadioButton sug4;
-    ToggleGroup group = new ToggleGroup() ;
 
     // HelloController hello = new HelloController();
    private Partie p ;
    private String Reponse ;
+   private int cpt ;
 
     @FXML
     void Submit(ActionEvent event) {
         int cs = p.getNum_case_act();
         Case plateau[] = p.getPlateau();
         HelloController.setTest(false);
+
         //System.out.println("True Or false : "+sug1.isSelected());
-        if (sug1.isSelected()) {
-            /*String rep = Reponse ;
-            String sug = sug1.getText() ;
-            System.out.println("Reponse :"+String.valueOf(Reponse)+" ,Sug "+String.valueOf(sug1.getText()) );*/
-            if (Reponse.equals(sug1.getText())) {
-               // System.out.println("les memes");
-                Aswr.setText("Votre Reponse est Juste");
-                HelloController.setTest(true);
-            } else {
-               // System.out.println(" n'est pasn les les memes");
-                Aswr.setText("Votre Reponse est Fausse");
-                // System.out.println("CSCSCS"+cs);
-                ((CaseDefinition) plateau[cs]).SetLose();
-
+        if(Tst)
+        {
+            String rep="" ;
+            TextField texts[] = new TextField[Reponse.length()];
+            hbox.getChildren().toArray(texts) ;
+           // System.out.println("SS"+texts[1].getText());
+           //= ((TextField) new hbox.getChildren().)
+            for(int i=0 ; i<texts.length ; i++)
+            {
+                rep = rep.concat(texts[i].getText());
             }
-            Aswr.setVisible(true);
-            Stage stg = (Stage) Sub.getScene().getWindow();
-            stg.close();
-
-        } else if (sug2.isSelected()) {
-            if (!Reponse.equals(sug2.getText())) {
-                Aswr.setText("Votre Reponse est Fausse");
-                ((CaseDefinition) plateau[cs]).SetLose();
-            } else {
-                Aswr.setText("Votre Reponse est Juste");
+           rep =  rep.toUpperCase() ;
+            if(Reponse.equals(rep))
+            {
+              // System.out.println("True");
                 HelloController.setTest(true);
             }
-            Aswr.setVisible(true);
-            Stage stg = (Stage) Sub.getScene().getWindow();
-            stg.close();
-
-        } else if (sug3.isSelected()) {
-            if (!Reponse.equals(sug3.getText())) {
-                Aswr.setText("Votre Reponse est Fausse");
-                ((CaseDefinition) plateau[cs]).SetLose();
-            } else {
-                Aswr.setText("Votre Reponse est Juste");
-                HelloController.setTest(true);
+            else {
+                //System.out.println("false");
+               ((CaseDefinition) plateau[cs]).SetLose();
+                HelloController.setTest(false);
             }
             Stage stg = (Stage) Sub.getScene().getWindow();
             stg.close();
-            Aswr.setVisible(true);
-        } else if (sug4.isSelected()) {
-            if (!Reponse.equals(sug4.getText())) {
-                Aswr.setText("Votre Reponse est Fausse");
-                ((CaseDefinition) plateau[cs]).SetLose();
-            } else {
-                Aswr.setText("Votre Reponse est Juste");
-                HelloController.setTest(true);
-
-            }
-            Aswr.setVisible(true);
-            Stage stg = (Stage) Sub.getScene().getWindow();
-            stg.close();
-        } else {
-            Aswr.setText("choissez  une reponse s'il vous plait ");
+        }else {
             Aswr.setVisible(true);
         }
-        /*try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
-            //throw new RuntimeException(e);
-            System.out.println("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
-        }*/
 
 
 
     }
     public void genererQuestion() {
         BufferedReader file = p.getfile();
-        sug1.setToggleGroup(group);
-        sug2.setToggleGroup(group);
-        sug3.setToggleGroup(group);
-        sug4.setToggleGroup(group);
+        cpt=0;
+       // Tst=true ;
        // openNewWindow();
         //System.out.println("GenereQuestion");
         StringTokenizer tok = null;
@@ -151,15 +101,11 @@ public class QuestionController {
             //System.out.println(h);
             tok = new StringTokenizer(h, ",");
            // System.out.println("SSSSSSs:" + tok.nextToken());
-            NumQues.setText("Question " + tok.nextToken());
+            NumQues.setText("Definition " + tok.nextToken());
             // System.out.println("le numero de la question est :" + tok.nextToken());
-            Question.setText("la question est :" + tok.nextToken());
+            Question.setText("La definition est :" + tok.nextToken());
             // System.out.println("la question est :" + tok.nextToken());
             // for (int i = 1; i < 5; i++) {
-            sug1.setText(tok.nextToken());
-            sug2.setText(tok.nextToken());
-            sug3.setText(tok.nextToken());
-            sug4.setText(tok.nextToken());
 
 
             //System.out.println("la suggestion " + i + " est " + tok.nextToken());
@@ -176,9 +122,36 @@ public class QuestionController {
         this.Reponse = tok.nextToken();
       /*  if (Integer.parseInt(tok.nextToken()) == rep) {
             System.out.println("la reponse est juste ");
+
         } else {
             System.out.println("la reponse est fausse ");
             SetLose();
         }*/
+        for (int i=0 ; i<Reponse.length() ; i++)
+        {
+            TextField text = new TextField() ;
+            text.setId("char"+i);
+            int max=0 ;
+
+            text.textProperty().addListener((observable ,oldValu , newValue)->{
+                if(newValue.length()>max)
+                {
+                    text.setDisable(true);
+                    cpt++;
+                   // Tst = true ;
+                }
+                if(newValue.length()==0)
+                {
+                    cpt--;
+                }
+                if(cpt==Reponse.length())
+                {
+                    Tst =true ;
+                    Aswr.setVisible(false);
+                }
+            });
+
+            hbox.getChildren().add(text);
+        }
     }
 }

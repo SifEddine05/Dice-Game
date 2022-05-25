@@ -75,6 +75,10 @@ public class Partie {
     {
         return this.grille.getFile();
     }
+    public BufferedReader getFileimg()
+    {
+        return this.grille.getFimg() ;
+    }
     public void setNum_case_act(int val)
     {
         this.num_case_act=val ;

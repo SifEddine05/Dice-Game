@@ -1,0 +1,2 @@
+01,Choissez l'image correspondant au mot Dev,btn2,1
+02,Choissez l'image correspondant au mot SS,btn3,5
