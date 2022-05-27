@@ -48,9 +48,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -420,109 +423,360 @@ public void openNewwindowImage()
 
     /********************************************/
     public void CreePlateau(Case Plateau[]) {
-
+        Stage stg = (Stage) gridpane.getScene().getWindow();
+       // System.out.println("W :"+stg.getWidth() );
+       double w = stg.getWidth() / 14.0 ;
+       double H = stg.getHeight() / 12.0 ;
+        //System.out.println("H :"+stg.getHeight() ) ;
+        // gridpane.getStylesheets().add(getClass().getResource());
         int i = 0;
         for (int j = 0; j < 16; j++) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
+            btn.setStyle("-fx-background-color:transparent");
+            btn.setOnAction(e -> Action(e));
+           // btn.setTextFill(Color.PURPLE);
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , j, 0 );
+           gridpane.add(btn, j, 0);
+
+            i++;
+
+            /*Button btn = new Button(Integer.toString(i));
+            //btn.setStyle("-fx-background-color:bleu" );
+            File file1 = new File("src/main/resources/Img/iii" + ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imgggg = new ImageView(img);
+           btn.widthProperty().addListener(e->{
+                imgggg.resize(btn.getWidth(),btn.getHeight());
+                imgggg.setFitWidth(btn.getWidth());
+            });
+            btn.heightProperty().addListener(e->{
+                imgggg.resize(btn.getWidth(),btn.getHeight());
+                imgggg.setFitHeight(btn.getHeight());
+            });
+           // imgggg.resize(130,30);
+
+
+            imgggg.setFitWidth(200);
+            imgggg.setFitHeight(30);
+            imgggg.setPreserveRatio(true);
+           // gridpane.add(imgggg, j, 0);
+          //  btn.getStylesheets().add("btn.css");
+           // btn.setStyle("-fx-border-color : red");
+            btn.setMaxWidth(Double.MAX_VALUE);
+            btn.setMaxHeight(Double.MAX_VALUE);
 
             btn.setOnAction(e -> Action(e));
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, j, 0);
-            i++;
+            //gridpane.
+           // gridpane.add(btn, j, 0);
+*/
+           // i++;
         }
-        for (int j = 1; j < 19; j++) {
+        for (int j = 1; j < 11; j++) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , 15, j );
             gridpane.add(btn, 15, j);
+
             i++;
+
         }
         for (int j = 14; j > 0; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, j, 18);
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , j, 10 );
+            gridpane.add(btn, j, 10);
+
             i++;
         }
-        for (int j = 17; j > 3; j--) {
+        for (int j = 10; j > 1; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , 1, j );
             gridpane.add(btn, 1, j);
+
             i++;
         }
-        for (int j = 2; j < 12; j++) {
+        for (int j = 2; j < 14; j++) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, j, 4);
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , j, 2 );
+            gridpane.add(btn, j, 2);
+
             i++;
         }
-        for (int j = 5; j < 16; j++) {
+        for (int j = 2; j < 9; j++) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, 11, j);
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , 13, j );
+            gridpane.add(btn, 13, j);
+
             i++;
         }
-        for (int j = 10; j > 4; j--) {
+        for (int j = 13; j > 2; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, j, 15);
-            i++;
-        }
-        for (int j = 14; j > 7; j--) {
-            Button btn = new Button(Integer.toString(i));
-            btn.setMaxWidth(Double.MAX_VALUE);
-            btn.setMaxHeight(Double.MAX_VALUE);
-            btn.setOnAction(e -> Action(e));
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, 5, j);
-            i++;
-        }
-        for (int j = 6; j < 8; j++) {
-            Button btn = new Button(Integer.toString(i));
-            btn.setMaxWidth(Double.MAX_VALUE);
-            btn.setMaxHeight(Double.MAX_VALUE);
-            btn.setOnAction(e -> Action(e));
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , j, 8 );
             gridpane.add(btn, j, 8);
+
             i++;
         }
-        for (int j = 9; j < 11; j++) {
+        for (int j = 8; j > 3; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
-//                btn.setStyle("HOVERED_BUTTON_STYLE");
-            btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
-            gridpane.add(btn, 7, j);
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , 3, j );
+            gridpane.add(btn, 3, j);
+
             i++;
         }
+        for (int j = 4; j < 12; j++) {
+            Button btn = new Button(Integer.toString(i));
+            btn.setMaxWidth(Double.MAX_VALUE);
+            btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
+            btn.setOnAction(e -> Action(e));
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , j, 4 );
+            gridpane.add(btn, j, 4);
+
+            i++;
+        }
+        for (int j = 5; j < 8; j++) {
+            Button btn = new Button(Integer.toString(i));
+            btn.setMaxWidth(Double.MAX_VALUE);
+            btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
+            btn.setOnAction(e -> Action(e));
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , 11, j );
+            gridpane.add(btn, 11, j);
+
+            i++;
+        }
+        for(int j=10;j>6;j--)
+        {
+            Button btn = new Button(Integer.toString(i));
+            btn.setMaxWidth(Double.MAX_VALUE);
+            btn.setMaxHeight(Double.MAX_VALUE);
+            btn.setStyle("-fx-background-color:transparent");
+            btn.setOnAction(e -> Action(e));
+            if(p.getPlateau()[i].getColor()=="White")
+            {
+                btn.setTextFill(Color.BLACK);
+            }
+            else {
+                btn.setTextFill(Color.WHITE);
+            }
+            File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+            Image img =new Image(file1.toURI().toString()) ;
+            ImageView imageView = new ImageView(img) ;
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(H);
+            imageView.setPreserveRatio(true);
+            gridpane.add(imageView , j, 7 );
+            gridpane.add(btn, j, 7);
+
+            i++;
+        }
+
+        Button btn = new Button(Integer.toString(i));
+        btn.setMaxWidth(Double.MAX_VALUE);
+        btn.setMaxHeight(Double.MAX_VALUE);
+        btn.setStyle("-fx-background-color:transparent");
+        btn.setOnAction(e -> Action(e));
+        //btn.setTextFill(Color.WHITE);
+        if(p.getPlateau()[i].getColor()=="White")
+        {
+            btn.setTextFill(Color.BLACK);
+        }
+        else {
+            btn.setTextFill(Color.WHITE);
+        }
+        File file1 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+        Image img =new Image(file1.toURI().toString()) ;
+        ImageView imageView = new ImageView(img) ;
+        imageView.setFitWidth(w);
+        imageView.setFitHeight(H);
+        imageView.setPreserveRatio(true);
+        gridpane.add(imageView , 7, 6 );
+        gridpane.add(btn, 7, 6);
+
+        i++;
+       /* Button btn1 = new Button(Integer.toString(i));
+        //  Button btn = new Button(Integer.toString(i));
+        btn1.setMaxWidth(Double.MAX_VALUE);
+        btn1.setMaxHeight(Double.MAX_VALUE);
+        btn1.setStyle("-fx-background-color:transparent");
+        btn1.setOnAction(e -> Action(e));
+        //btn.setStyle("-fx-background-color :" + Plateau[i].getColor());
+        //gridpane.add(btn1, 7, 6);
+        File file2 = new File("src/main/resources/Img/test" + ".png") ;
+        Image img122 =new Image(file2.toURI().toString()) ;
+        ImageView imageV = new ImageView(img122) ;
+        imageV.setFitWidth(w);
+        imageV.setFitHeight(H);
+        imageV.setPreserveRatio(true);
+        gridpane.add(imageV , 7, 6 );
+        gridpane.add(btn1, 7, 6);
+        //imgv.setPreserveRatio(true);
+      /*  gridpane.add(imageView , 6, 6 );
+        gridpane.add(btn, 6, 6);*/
+
+        //bk.setPosition();
+        //System.out.println("SS :"+bk.get());
+        //i++;*/
+        gridpane.setHgap(2);
+        gridpane.setVgap(2);
     }
 
 

@@ -16,7 +16,7 @@
     <center>
         <AnchorPane>
             <children>
-                <GridPane fx:id="gridpane" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
+                <GridPane fx:id="gridpane" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="816.0" stylesheets="@btn.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
@@ -36,14 +36,6 @@
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
                         <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
                         <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
                         <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
