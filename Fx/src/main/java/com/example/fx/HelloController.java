@@ -42,18 +42,17 @@ import Classes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -82,6 +81,8 @@ public class HelloController {
 
     @FXML
     private  Label Question ;
+    @FXML
+    private  ImageView monkey ;
     @FXML
     private RadioButton  sug1 ;
     @FXML
@@ -236,7 +237,6 @@ public void openNewwindowImage()
     }*/
 
 
-
     public Boolean Test(int valjoeur) // tester si le joeur aller a la case vrai
     {
         //num_case_actuel = p.getNum_case_act();
@@ -255,24 +255,94 @@ public void openNewwindowImage()
         }
     }
 
+    void  PositionMonkey(int valjoeur)
+    {
+        File filee ;
+        if((0<=valjoeur && valjoeur<=15) || (47<=valjoeur && valjoeur<=59)|| (79<=valjoeur && valjoeur<=87) || valjoeur==99 || valjoeur==98 || valjoeur==97)
+        {
+            filee = new File("src/main/resources/Monkey/monkey.png") ;
+            monkey.setImage(new Image(filee.toURI().toString()));
+        } else if ((16<=valjoeur && valjoeur<=24) || (60<=valjoeur && valjoeur<=64)|| (88<=valjoeur && valjoeur<=89)) {
+            filee = new File("src/main/resources/Monkey/monkey2.png") ;
+            monkey.setImage(new Image(filee.toURI().toString()));
+        } else if ((40<=valjoeur && valjoeur<=46) || (76<=valjoeur && valjoeur<=78)) {
+            filee = new File("src/main/resources/Monkey/monkey3.png") ;
+            // Image imgg1 = new Image(filee.toURI().toString()) ;
+            monkey.setImage(new Image(filee.toURI().toString()));
+        }
+        else {
+            filee = new File("src/main/resources/Monkey/monkey4.png") ;
+            monkey.setImage(new Image(filee.toURI().toString()));
+        }
+    }
     void Action(ActionEvent e) {
-        // num_case_actuel = p.getNum_case_act();
+//        imgv.setVisible(false);
         Case Plateau[] = p.getPlateau();
         Joeur j = p.getJoeur();
         Object node = e.getSource(); //returns the object that generated the event
         System.out.println(node instanceof Button); //prints true. demonstrates the source is a Button
         //since the returned object is a Button you can cast it to one
         Button b = (Button) node;
+
+        //ImageView imgv = ((ImageView)b.getGraphic()) ;
+/*ImageView imgv = new ImageView() ;
+        imgv.setFitWidth(56);
+        imgv.setFitHeight(46);
+        imgv.setPreserveRatio(true);*/
+        //gridpane.getChildren().remove(monkey);
+
        // boolean go =false ;
        // System.out.println(b.getText());
         int valjoeur = Integer.parseInt(b.getText());
+        //imgv = this.imgv ;
 
-            if (Test(valjoeur) ) {
+       // monkey.setId("ss");
+
+       // b.setGraphic(monkey);
+        //monkey.setVisible(true);
+
+        /*try {
+            monkey =
+        }
+        catch (ClassCastException exception )
+        {
+            System.out.println("sifou");
+        }
+
+       if(monkey==null)
+       {
+
+       }*/
+
+        //b.graphicProperty().setValue(monkey);
+
+
+        if (Test(valjoeur) ) {
+            Node n =  b.getGraphic();
+            PositionMonkey(valjoeur);
+            if(n!=null)
+            {
+               // ((ImageView) n).setImage(null);
+                System.out.println("Btn "+b.getText());
+                b.setGraphic(null);
+                b.setContentDisplay(ContentDisplay.CENTER);
+                b.setGraphic((monkey));
+
+                //((ImageView) n).setPreserveRatio(true);
+            }
+            else {
+                b.setContentDisplay(ContentDisplay.CENTER);
+                b.setGraphic(monkey);
+
+            }
+                //b.setGraphic(monkey);
+               // imgv.setVisible(false);
+                b.setContentDisplay(ContentDisplay.CENTER);
+
                 if(Plateau[valjoeur].getColor()=="blue")
                 {
 
-
-                    openNewWindow();
+                       openNewWindow();
                         String ss = Plateau[j.getCaseActuel()].Action(j);
                         Info.setText(ss);
                         Info4.setVisible(false);
@@ -280,6 +350,7 @@ public void openNewwindowImage()
                         Info2.setText("Votre Score est : "+j.getScoreActuel());
                         if(Test)
                         {
+
                             Info4.setVisible(true);
                             Info4.setText("Votre Reponse est juste");
                         }
@@ -296,6 +367,8 @@ public void openNewwindowImage()
                     Info4.setVisible(false);
                     Info3.setText("La case Actuel est : "+num_case_actuel);
                     Info2.setText("Votre Score est : "+j.getScoreActuel());
+                    /*b.setGraphic(monkey);
+                    b.setContentDisplay(ContentDisplay.CENTER);*/
                     if(Testimg)
                     {
                         Info4.setVisible(true);
@@ -310,6 +383,8 @@ public void openNewwindowImage()
                 } else
                 {
                     String ss = Plateau[j.getCaseActuel()].Action(j);
+                   /* b.setGraphic(monkey);
+                    b.setContentDisplay(ContentDisplay.CENTER);*/
                     if (Fin)
                     {
                         alert.setTitle("Filistation !!!");
@@ -329,8 +404,6 @@ public void openNewwindowImage()
                         }
                     }
                     Info.setText(ss);
-
-
                     Info4.setVisible(false);
                     Info3.setText("La case Actuel est : "+num_case_actuel);
                     Info2.setText("Votre Score est : "+j.getScoreActuel());
@@ -434,8 +507,17 @@ public void openNewwindowImage()
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
+            if(j==0)
+            {
+                File filee = new File("src/main/resources/Monkey/monkey.png") ;
+                monkey.setImage(new Image(filee.toURI().toString()));
+                btn.setContentDisplay(ContentDisplay.CENTER);
+                btn.setGraphic(monkey);
+            }
+
             btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
+
            // btn.setTextFill(Color.PURPLE);
             if(p.getPlateau()[i].getColor()=="White")
             {
@@ -517,6 +599,7 @@ public void openNewwindowImage()
             btn.setMaxHeight(Double.MAX_VALUE);
             btn.setStyle("-fx-background-color:transparent");
             btn.setOnAction(e -> Action(e));
+
             if(p.getPlateau()[i].getColor()=="White")
             {
                 btn.setTextFill(Color.BLACK);
@@ -535,7 +618,7 @@ public void openNewwindowImage()
 
             i++;
         }
-        for (int j = 10; j > 1; j--) {
+        for (int j = 9; j > 1; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
@@ -583,7 +666,7 @@ public void openNewwindowImage()
 
             i++;
         }
-        for (int j = 2; j < 9; j++) {
+        for (int j = 3; j < 9; j++) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
@@ -607,7 +690,7 @@ public void openNewwindowImage()
 
             i++;
         }
-        for (int j = 13; j > 2; j--) {
+        for (int j = 12; j > 2; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
@@ -631,7 +714,7 @@ public void openNewwindowImage()
 
             i++;
         }
-        for (int j = 8; j > 3; j--) {
+        for (int j = 7; j > 3; j--) {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
@@ -703,7 +786,7 @@ public void openNewwindowImage()
 
             i++;
         }
-        for(int j=10;j>6;j--)
+        for(int j=10;j>4;j--)
         {
             Button btn = new Button(Integer.toString(i));
             btn.setMaxWidth(Double.MAX_VALUE);
@@ -748,8 +831,31 @@ public void openNewwindowImage()
         imageView.setFitWidth(w);
         imageView.setFitHeight(H);
         imageView.setPreserveRatio(true);
-        gridpane.add(imageView , 7, 6 );
-        gridpane.add(btn, 7, 6);
+        gridpane.add(imageView , 5, 6 );
+        gridpane.add(btn, 5, 6);
+
+        i++;
+        Button btn1 = new Button(Integer.toString(i));
+        btn1.setMaxWidth(Double.MAX_VALUE);
+        btn1.setMaxHeight(Double.MAX_VALUE);
+        btn1.setStyle("-fx-background-color:transparent");
+        btn1.setOnAction(e -> Action(e));
+        //btn.setTextFill(Color.WHITE);
+        if(p.getPlateau()[i].getColor()=="White")
+        {
+            btn1.setTextFill(Color.BLACK);
+        }
+        else {
+            btn1.setTextFill(Color.WHITE);
+        }
+        File file12 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+        Image img22 =new Image(file12.toURI().toString()) ;
+        ImageView imageView2 = new ImageView(img22) ;
+        imageView2.setFitWidth(w);
+        imageView2.setFitHeight(H);
+        imageView2.setPreserveRatio(true);
+        gridpane.add(imageView2 , 6, 6 );
+        gridpane.add(btn1, 6, 6);
 
         i++;
        /* Button btn1 = new Button(Integer.toString(i));
@@ -775,6 +881,29 @@ public void openNewwindowImage()
         //bk.setPosition();
         //System.out.println("SS :"+bk.get());
         //i++;*/
+        Button btn12 = new Button(Integer.toString(i));
+        btn12.setMaxWidth(Double.MAX_VALUE);
+        btn12.setMaxHeight(Double.MAX_VALUE);
+        btn12.setStyle("-fx-background-color:transparent");
+        btn12.setOnAction(e -> Action(e));
+        //btn.setTextFill(Color.WHITE);
+        if(p.getPlateau()[i].getColor()=="White")
+        {
+            btn12.setTextFill(Color.BLACK);
+        }
+        else {
+            btn12.setTextFill(Color.WHITE);
+        }
+        File file122 = new File("src/main/resources/Cases/Case" +p.getPlateau()[i].getColor()+ ".png") ;
+        Image img222 =new Image(file122.toURI().toString()) ;
+        ImageView imageView22 = new ImageView(img222) ;
+        imageView22.setFitWidth(w);
+        imageView22.setFitHeight(H);
+        imageView22.setPreserveRatio(true);
+        gridpane.add(imageView22 , 7, 6 );
+        gridpane.add(btn12, 7, 6);
+
+        i++;
         gridpane.setHgap(2);
         gridpane.setVgap(2);
     }

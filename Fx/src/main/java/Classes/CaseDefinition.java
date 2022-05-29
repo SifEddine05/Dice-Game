@@ -26,15 +26,35 @@ public class CaseDefinition extends CaseQuestion {
 
     public String Action(Joeur j) {
         afficher();
+        int num_case_actuel = j.getCaseActuel();
+        int val = Nb_Case;
+        if (num_case_actuel + val > 99) {
 
-        j.modifierCase(Nb_Case);
-        j.modifierScore(nbr_Points);
+            // joeur.modifierCase(-(joeur.getCaseActuel()+val-99));
+            int val2 = 99 - j.getCaseActuel();
+            val = -(j.getCaseActuel() + val - 99) + val2;
+            j.modifierCase(val);
+            // joeur.modifierCase(val2+joeur.getCaseActuel()) ;
+            if (val > 0) {
+                return ("Avancer " + val + " en avant");
+            } else {
+                return ("Recouler " + val + " en arriere");
+            }
 
-        if (Nb_Case > 0) {
-            return ("Avancer " + Nb_Case + " en avant");
-            //System.out.println("Avancer " + Nb_Case + " en avant");
+            //System.out.println();
+
+        } else {
+            j.modifierCase(Nb_Case);
+            j.modifierScore(nbr_Points);
+            if (Nb_Case > 0) {
+                return ("Avancer " + Nb_Case + " en avant");
+                //System.out.println("Avancer " + Nb_Case + " en avant");
+            }
+            return "Relancer le De";
+           // return ("Avancer " + Nb_Case + " en avant");
         }
-        return "Relancer le De";
+
+
     }
 
     public void genererQuestion() {
