@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fx.HelloController">
+    <center>
+        <AnchorPane>
+            <children>
+                <GridPane fx:id="gridpane" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-1.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                    </rowConstraints>
+                </GridPane>
+            </children>
+        </AnchorPane>
+    </center>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+   <left>
+      <VBox alignment="CENTER" spacing="25.0">
+         <children>
+            <HBox fx:id="de" alignment="CENTER">
+               <children>
+                  <VBox id="dee" fx:id="dee" alignment="CENTER" stylesheets="@bground.css">
+                     <children>
+                        <ImageView fx:id="img2" fitHeight="98.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="dee" alignment="CENTER" stylesheets="@bground.css">
+                     <children>
+                        <ImageView fx:id="img1" fitHeight="99.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="49.0" fitWidth="200.0" layoutX="60.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Img/122.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="Lancer_De" disable="true" layoutX="66.0" layoutY="-5.0" mnemonicParsing="false" onAction="#lancer_De" prefHeight="63.0" prefWidth="148.0" style="-fx-background-image: src/main/resourcess/Img/122.PNG; -fx-background-color: transparent;" text="Roll" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@123.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="95.0" layoutY="49.0" prefHeight="36.0" prefWidth="111.0" text="Score" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="136.0" prefHeight="45.0" prefWidth="87.0" text="Case" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="74.0" layoutY="174.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="102.0" layoutX="17.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Img/124.PNG" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Info3" layoutX="38.0" layoutY="1.0" prefHeight="43.0" prefWidth="53.0" text="0" textFill="WHITE">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="91.0" layoutY="94.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Img/124.PNG" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Info2" layoutX="25.0" layoutY="-5.0" prefHeight="43.0" prefWidth="70.0" text="0" textAlignment="JUSTIFY" textFill="WHITE" textOverrun="CLIP">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Label fx:id="info2" text="Label" />
+            <Label fx:id="Info4" prefHeight="42.0" prefWidth="181.0" text="Text" visible="false" />
+            <Label fx:id="Info" prefHeight="42.0" prefWidth="108.0" text="&quot;Lancer le jeu&quot;" />
+            <Button fx:id="Start" mnemonicParsing="false" onAction="#demarer" style="-fx-background-color: #fdbd76;" textFill="WHITE" />
+            <Button fx:id="quit" mnemonicParsing="false" onAction="#quitter" style="-fx-background-color: #fdbd76;" textFill="WHITE" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
