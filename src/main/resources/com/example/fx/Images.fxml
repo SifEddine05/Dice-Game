@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="question" prefHeight="478.0" prefWidth="480.0" style="-fx-background-color: transparent;" stylesheets="@bground.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fx.ImagesController">
+   <children>
+      <Label fx:id="NumImg" alignment="CENTER" layoutX="132.0" layoutY="24.0" prefHeight="53.0" prefWidth="224.0" text="Image" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="Qes" layoutX="71.0" layoutY="102.0" prefHeight="38.0" prefWidth="352.0" text="la question" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img1" fitHeight="136.0" fitWidth="154.0" layoutX="90.0" layoutY="140.0" pickOnBounds="true" />
+      <ImageView fx:id="img2" fitHeight="136.0" fitWidth="154.0" layoutX="275.0" layoutY="140.0" pickOnBounds="true" />
+      <ImageView fx:id="img3" fitHeight="136.0" fitWidth="154.0" layoutX="90.0" layoutY="292.0" pickOnBounds="true" />
+      <ImageView fx:id="img4" fitHeight="136.0" fitWidth="154.0" layoutX="275.0" layoutY="292.0" pickOnBounds="true" />
+      <RadioButton fx:id="btn1" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" layoutX="71.0" layoutY="140.0" mnemonicParsing="false" onAction="#Selected" textAlignment="CENTER" />
+      <RadioButton fx:id="btn2" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" layoutX="251.0" layoutY="140.0" mnemonicParsing="false" onAction="#Selected" textAlignment="CENTER" />
+      <RadioButton fx:id="btn3" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" layoutX="71.0" layoutY="292.0" mnemonicParsing="false" onAction="#Selected" textAlignment="CENTER" />
+      <RadioButton fx:id="btn4" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" layoutX="251.0" layoutY="292.0" mnemonicParsing="false" onAction="#Selected" textAlignment="CENTER" />
+      <Label fx:id="Aswr" layoutX="164.0" layoutY="405.0" prefHeight="25.0" prefWidth="204.0" text="choissez  une reponse s'il vous plait " textFill="#e40606" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="199.0" layoutY="432.0">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Img/122.PNG" />
+               </image>
+            </ImageView>
+            <Button fx:id="Sub" layoutY="-3.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Submit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
