@@ -507,7 +507,8 @@ public void openNewwindowImage()
        // System.out.println("W :"+stg.getWidth() );
        double w = stg.getWidth() / 14.0 ;
        double H = stg.getHeight() / 12.0 ;
-        //System.out.println("H :"+stg.getHeight() ) ;
+        System.out.println("H :"+ H ) ;
+        System.out.println("H :"+w ) ;
         // gridpane.getStylesheets().add(getClass().getResource());
 
         int i = 0;

@@ -38,11 +38,12 @@ public class AceuillController {
             cnt.setDisable(false);
 
             try{
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("hello-view.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(AceuillController.class.getResource("hello-view.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 user=new Utilisateur(name.getText()) ;
                 j=new Joeur(user) ;
                 pAcceuil=new Partie(j) ;
+
 
                /* questionController.setP(p);
                 questionController.genererQuestion();*/
