@@ -76,7 +76,7 @@ public class HelloController {
     @FXML
     private ImageView img2;
     @FXML
-    private Label Info2=new Label();
+    private Label Info2;
     @FXML
     private Label Info3 = new Label();
     @FXML
@@ -116,7 +116,7 @@ public class HelloController {
 
     static  Partie propsP ;
 
-    static Partie getPartie() {return propsP ;
+    static Partie getPartie() {return AceuillController.pAcceuil ;
     }
 
     private Partie p;
@@ -352,8 +352,8 @@ public void openNewwindowImage()
                         String ss = Plateau[j.getCaseActuel()].Action(j);
                         Info.setText(ss);
                         Info4.setVisible(false);
-                        Info3.setText("La case Actuel est : "+num_case_actuel);
-                        Info2.setText("Votre Score est : "+j.getScoreActuel());
+                        Info3.setText(""+num_case_actuel);
+                        Info2.setText(""+j.getScoreActuel());
                         if(Test)
                         {
 
@@ -371,8 +371,8 @@ public void openNewwindowImage()
                     String ss = Plateau[j.getCaseActuel()].Action(j);
                     Info.setText(ss);
                     Info4.setVisible(false);
-                    Info3.setText("La case Actuel est : "+num_case_actuel);
-                    Info2.setText("Votre Score est : "+j.getScoreActuel());
+                    Info3.setText(""+num_case_actuel);
+                    Info2.setText(""+j.getScoreActuel());
                     /*b.setGraphic(monkey);
                     b.setContentDisplay(ContentDisplay.CENTER);*/
                     if(Testimg)
@@ -411,8 +411,8 @@ public void openNewwindowImage()
                     }
                     Info.setText(ss);
                     Info4.setVisible(false);
-                    Info3.setText("La case Actuel est : "+num_case_actuel);
-                    Info2.setText("Votre Score est : "+j.getScoreActuel());
+                    Info3.setText(""+num_case_actuel);
+                    Info2.setText(""+j.getScoreActuel());
                 }
 
             }
@@ -956,11 +956,11 @@ public void openNewwindowImage()
             ImageView i2=new ImageView()  ;
             i2.setImage(new Image(file.toURI().toString()));
             quit.setGraphic(i2);
-       Partie Partie = new Partie(j);
-        this.p = Partie;
+      // Partie Partie = new Partie(j);
+        this.p = AceuillController.pAcceuil ;
            // this.propsP=Partie ;
-        this.num_case_actuel=p.getNum_case_act();
-        Case Plateau[] = Partie.getPlateau();
+        this.num_case_actuel=AceuillController.pAcceuil.getNum_case_act();
+        Case Plateau[] =(AceuillController.pAcceuil).getPlateau();
         CreePlateau(Plateau);
         Lancer_De.setDisable(false);
         //openNewWindow();

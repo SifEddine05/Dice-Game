@@ -1,6 +1,8 @@
 package com.example.fx;
 
+import Classes.Joeur;
 import Classes.Partie;
+import Classes.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class AceuillController {
-     Partie pAcceuil ;
+     public static Partie pAcceuil ;
+     public Joeur j ;
+     public Utilisateur user ;
     @FXML
     Button newgame ;
 
@@ -36,6 +40,12 @@ public class AceuillController {
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("hello-view.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
+                user=new Utilisateur(name.getText()) ;
+                j=new Joeur(user) ;
+                pAcceuil=new Partie(j) ;
+
+               /* questionController.setP(p);
+                questionController.genererQuestion();*/
                 // ImagesController imagesController = fxmlLoader.getController();
                 //questionController.setReponse(Reponse);
                 //  imagesController.setP(p);
@@ -47,16 +57,25 @@ public class AceuillController {
         stage.setScene(sc);
         stage.showAndWait();*/
 
+
                 Stage stage = new Stage();
                 // stage.initStyle(StageStyle.TRANSPARENT);
                 stage.initStyle(StageStyle.DECORATED);
-                Scene sc = new Scene(root1) ;
+               // Scene sc = new Scene(root1) ;
+                Scene sc = new Scene(root1,1320,1240) ;
 
                 // sc.setFill(Color.TRANSPARENT);
                 stage.setScene(sc);
+               // stage.setFullScreen(true);
+                //Scene sc = new Scene(fxmlLoader.load(),1320,1240) ;
+
                 Stage stg = (Stage) newgame.getScene().getWindow();
+                /*HelloController Hello = fxmlLoader.getController();
+                Hello.demarer(pAcceuil);*/
                 stg.close();
-                stage.showAndWait();
+              /*  System.out.println("ww:"+stage.getWidth() );
+                System.out.println("HH"+stage.getHeight());*/
+                stage.show();
 
 
             } catch(Exception e) {

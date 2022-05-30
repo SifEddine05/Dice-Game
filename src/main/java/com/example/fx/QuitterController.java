@@ -34,7 +34,7 @@ public class QuitterController {
         System.out.println("restaurer");
         try{
             ObjectInputStream in;
-            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("point.dat"))));
+            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Point.dat"))));
             try {
                 System.out.println (((Partie)in.readObject()).getJoeur().getUser().get_Nom());
                 //  System.out.println (((Partie)in.readObject()).getJoeur().getScoreActuel());

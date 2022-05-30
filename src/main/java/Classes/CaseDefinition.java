@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.StringTokenizer;
 
 public class CaseDefinition extends CaseQuestion implements Serializable {
-    private BufferedReader file = null;
+    private transient BufferedReader file = null;
 
     public CaseDefinition(BufferedReader f) {
         // la definition de fichier
