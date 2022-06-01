@@ -167,7 +167,6 @@
                   </Label>
                     </children>
                 </AnchorPane>
-                <Button fx:id="Start" mnemonicParsing="false" onAction="#demarer" style="-fx-background-color: #fdbd76;" textFill="WHITE" />
                 <Button fx:id="quit" mnemonicParsing="false" onAction="#quitter" style="-fx-background-color: #fdbd76;" textFill="WHITE" />
                 <Label fx:id="Info4" prefHeight="42.0" prefWidth="181.0" text="Text" visible="false" />
             </children>

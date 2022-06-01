@@ -37,7 +37,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="139.0" layoutY="183.0" prefHeight="53.0" prefWidth="214.0" text="Save the game ?" textFill="WHITE">
+      <Label layoutX="112.0" layoutY="183.0" prefHeight="53.0" prefWidth="288.0" text="Save the game ?" textFill="#e40303">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font>

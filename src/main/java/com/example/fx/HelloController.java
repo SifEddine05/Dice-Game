@@ -116,11 +116,9 @@ public class HelloController {
 
     static  Partie propsP ;
 
-    static Partie getPartie() {return AceuillController.pAcceuil ;
-    }
-
-    private Partie p;
-   private String Reponse ;
+    public static Partie getPartie() {return p ;}
+    private static  Partie p;
+    private String Reponse ;
 
     private int num_case_actuel ;
     private static  Boolean Fin =false;
@@ -495,20 +493,19 @@ public void openNewwindowImage()
         Lancer_De.setDisable(true);
     }
 
-
-    /**********************************Creation de joeur**************/
-    Utilisateur user = new Utilisateur("Sifou");
-    Joeur j = new Joeur(user);
+    static private Stage stg ;
 
     /********************************************/
     public void CreePlateau(Case Plateau[]) {
-        System.out.println("eeeeeeeeeeeeeeeeee");
-        Stage stg = (Stage) gridpane.getScene().getWindow();
+        //System.out.println("eeeeeeeeeeeeeeeeee");
+         stg = (Stage) gridpane.getScene().getWindow();
        // System.out.println("W :"+stg.getWidth() );
-       double w = stg.getWidth() / 14.0 ;
-       double H = stg.getHeight() / 12.0 ;
+       double w = stg.getWidth() / 14.83 ;//14.83
+       double H = stg.getHeight() / 13.0 ;//13
+        /*double w = 92 ;
+        double H = 59 ;*/
         System.out.println("H :"+ H ) ;
-        System.out.println("H :"+w ) ;
+        System.out.println("W :"+w ) ;
         // gridpane.getStylesheets().add(getClass().getResource());
 
         int i = 0;
@@ -946,9 +943,36 @@ public void openNewwindowImage()
             valjoeur = sc.nextInt();
         }
     }*/
-        @FXML
+    void demare (Partie partie)
+    {
+        /*File file = new File("src/main/resources/Img/play.PNG") ;
+        //File file1 = new File("src/main/resources/Img/inverted-dice-" + nb2 + ".png") ;
+        ImageView i=new ImageView()  ;
+        i.setImage(new Image(file.toURI().toString()));
+       // Start.setGraphic(i);*/
+        File file = new File("src/main/resources/Img/quit.PNG") ;
+        ImageView i2=new ImageView()  ;
+        i2.setImage(new Image(file.toURI().toString()));
+        quit.setGraphic(i2);
+        // Partie Partie = new Partie(j);
+        this.p = partie  ;
+        // this.propsP=Partie ;
+        this.num_case_actuel=p.getNum_case_act();
+        Case Plateau[] =p.getPlateau();
+        CreePlateau(Plateau);
+        Lancer_De.setDisable(false);
+        Info3.setText(""+num_case_actuel);
+        Info2.setText(""+p.getJoeur().getScoreActuel());
+
+    }
+    static void close ()
+    {
+        // stg = (Stage) gridpane.getScene().getWindow();
+        stg.close();
+    }
+        /*@FXML
         void demarer (ActionEvent event){
-            File file = new File("src/main/resources/Img/play.PNG") ;
+           /* File file = new File("src/main/resources/Img/play.PNG") ;
             //File file1 = new File("src/main/resources/Img/inverted-dice-" + nb2 + ".png") ;
             ImageView i=new ImageView()  ;
             i.setImage(new Image(file.toURI().toString()));
@@ -967,9 +991,9 @@ public void openNewwindowImage()
         //openNewWindow();
            // openNewwindowImage();
         //Info.setText("Som" + De.Som());
-       // System.out.println("Som" + De.Som());
+       // System.out.println("Som" + De.Som());*/
 
-    }
+    //}
 
     @FXML
     void quitter()
@@ -982,6 +1006,9 @@ public void openNewwindowImage()
             stage.initStyle(StageStyle.TRANSPARENT);
             Scene sc = new Scene(root1) ;
             sc.setFill(Color.TRANSPARENT);
+            QuitterController quitterController = fxmlLoader.getController() ;
+            quitterController.setP(p);
+           // quitterController.setJeu(jeu);
             stage.setScene(sc);
             stage.show();
 
