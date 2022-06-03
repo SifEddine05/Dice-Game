@@ -1,0 +1,10 @@
+01,Choose the right picture <<Suit>> ,btn3,1
+02,Choose the right picture <<Snake>,btn1,5
+03,Choose the right picture <<Elephant>>,btn1,9
+04,Choose the right picture <<Water>>,btn4,13
+05,Choose the right picture <<Candy>>,btn4,17
+06,Choose the right picture <<Oil>>,btn3,21
+07,Choose the right picture <<Pasta>>,btn2,25
+08,Choose the right picture <<Book>>,btn1,29
+09,Choose the right picture <<Newspaper>>,btn4,33
+10,Choose the right picture <<Sandwich>>,btn1,37
