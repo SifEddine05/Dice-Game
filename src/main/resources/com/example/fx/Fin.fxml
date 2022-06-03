@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="question" prefHeight="514.0" prefWidth="504.0" style="-fx-background-color: transparent;" stylesheets="@bground.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fx.FinController">
+   <children>
+      <Label layoutX="130.0" layoutY="14.0" prefHeight="77.0" prefWidth="236.0" text="Congratulations">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="179.0" layoutY="110.0" prefHeight="34.0" prefWidth="153.0" text="Your Score is:">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="152.0" layoutY="138.0" prefHeight="77.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="53.0" fitWidth="200.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Img/124.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="score" alignment="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="161.0" layoutY="240.0" prefHeight="34.0" prefWidth="206.0" text="Your best Score is:">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="156.0" layoutY="265.0" prefHeight="77.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="53.0" fitWidth="200.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Img/124.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="bestjrscore" alignment="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="35.0" prefWidth="69.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="155.0" layoutY="368.0" prefHeight="77.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="53.0" fitWidth="200.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Img/124.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="bestjscore" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="12.0" prefHeight="35.0" prefWidth="69.0" text="0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="172.0" layoutY="342.0" prefHeight="34.0" prefWidth="184.0" text="The best Score is:">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="morebestscore" alignment="CENTER" layoutX="85.0" layoutY="215.0" prefHeight="27.0" prefWidth="338.0" text="Congratulations !! You get more than your best score" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

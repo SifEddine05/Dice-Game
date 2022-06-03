@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="gridpane" alignment="CENTER" maxWidth="1.7976931348623157E308" stylesheets="@bground.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fx.AceuillController">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="0.0" prefWidth="0.0">
+               <children>
+                  <ImageView fitHeight="594.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.638641357421875" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.361358642578125">
+                     <image>
+                        <Image url="@../../../Img/117.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="81.0" fitWidth="253.0" layoutX="63.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Img/133-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="81.0" fitWidth="253.0" layoutX="63.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Img/134-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="81.0" fitWidth="253.0" layoutX="63.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Img/135-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="newgame" layoutX="62.0" layoutY="103.0" mnemonicParsing="false" onAction="#Newgame" prefHeight="59.0" prefWidth="244.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="cnt" layoutX="68.0" layoutY="180.0" mnemonicParsing="false" onAction="#Loadgame" prefHeight="67.0" prefWidth="244.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="ex" layoutX="68.0" layoutY="258.0" mnemonicParsing="false" onAction="#Exit" prefHeight="67.0" prefWidth="244.0" style="-fx-background-color: transparent;" />
+                  <TextField fx:id="name" layoutX="29.0" layoutY="40.0" prefHeight="42.0" prefWidth="222.0" promptText="what is your name ! ">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Label fx:id="username" alignment="CENTER" layoutX="29.0" layoutY="82.0" prefHeight="19.0" prefWidth="222.0" text="you didn't save any game" textAlignment="CENTER" textFill="#f80000" visible="false">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="newuser" layoutX="262.0" layoutY="52.0" mnemonicParsing="false" text="new user" textFill="#863d18">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

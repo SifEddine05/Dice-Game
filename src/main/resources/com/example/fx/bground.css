@@ -1,0 +1,29 @@
+
+#gridpane{
+    -fx-background-image: url('bkg.jpg') ;
+    -fx-background-size: cover ;
+    -fx-background-position : centre ;
+    -fx-background-repeat : no-repeat ;
+}
+
+#question{
+    -fx-background-image: url('question.png') ;
+
+    -fx-background-position : centre ;
+    -fx-background-repeat : no-repeat ;
+}
+
+#Dee{
+    -fx-background-image: url('123.PNG') ;
+
+    -fx-background-position : centre ;
+    -fx-background-repeat : no-repeat ;
+}
+
+#background{
+    -fx-background-image: url('122.png') ;
+    -fx-background-size: cover ;
+    -fx-background-position : centre ;
+    -fx-background-repeat : no-repeat ;
+}
+
