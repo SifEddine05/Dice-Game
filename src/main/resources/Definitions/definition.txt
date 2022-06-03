@@ -3,7 +3,7 @@
 03,an electronic device for storing and processing data ,COMPUTER
 04,a panel of keys that operate a computer or typewriter ,KEYBOARD
 05,a small handheld input device that controls a computer cursor ,MOUSE
-06,a coulouries,transparent liquide,odourless liquid that forms the seas ,WATER
+06,a coulouries transparent liquide odourless liquid that forms the seas ,WATER
 07,a liquid asset used in the settlement of transactions ,MONEY
 08,a sweet and sticky yellowish-brown fluid made by bees ,HONEY
 09,an opaque white fluid rich in fat and protein ,MILK

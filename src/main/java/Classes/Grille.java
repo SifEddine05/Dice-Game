@@ -36,23 +36,23 @@ public class Grille implements Serializable {
         plateau[0] = new CaseDepart();
         for (i = 0; i < 5; i++) {
             j = 5*i + 1;
-            plateau[j] = new CaseDefinition();
+            plateau[j] = new CaseBonus();
             //  plateau[j] = new CaseFin();
 
-            plateau[j + 1] = new CaseDefinition();
+            plateau[j + 1] =  new CaseMalus();
            // plateau[j+1 ] = new CaseFin();
 
             plateau[j + 2] =new CaseDefinition();
             //plateau[j + 2] = new CaseFin();
 
-            plateau[j + 3] = new CaseDefinition();
+            plateau[j + 3] = new CaseImage();
            // plateau[j + 3] = new CaseImage();
            // plateau[j+4]=new CaseSaut() ;
-            plateau[j + 4] =new CaseDefinition();
+            plateau[j + 4] =new CaseSaut();
         }
         for (i = 26; i < 98; i++) {
             //plateau[i] = new CaseFin();
-            plateau[i]=new CaseDefinition() ;
+            plateau[i]=new CaseParcours() ;
         }
         plateau[98] = new CaseParcours();
         plateau[99] = new CaseFin();

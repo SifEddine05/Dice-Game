@@ -17,7 +17,7 @@ Label Info2 ;
         afficher();
         j.modifierCase(Nb_Case);
         j.modifierScore(nbr_Points);
-        return ("Relancer le De") ;
+        return ("Reroll the dice") ;
 
     }
 

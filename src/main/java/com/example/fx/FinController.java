@@ -1,9 +1,17 @@
 package com.example.fx;
 
+import Classes.Joeur;
 import Classes.Partie;
 import Classes.Utilisateur;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.*;
 
@@ -26,10 +34,14 @@ public class FinController {
     Label bestjscore ;
 
     @FXML
+    Button newbutton ;
+
+    @FXML
     public void get() throws IOException, ClassNotFoundException {
         Utilisateur list_users[]=new Utilisateur[500] ;
         ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("src/main/resources/BestScore"))));
        int best_score= Integer.parseInt((String) in.readObject()) ;
+       bestjscore.setText(Integer.toString(best_score));
         in.close();
         // list_users[0]=p.getJoeur().getUser() ;
         // list_users.add(p.getJoeur().getUser()) ;
@@ -63,6 +75,7 @@ public class FinController {
                         if(p.getJoeur().getScoreActuel()>best_score)
                         {
                             morebestscore.setText("Confratulations !! you are the best score");
+                            bestjscore.setText(Long.toString(p.getJoeur().getScoreActuel()));
                             ObjectOutputStream s= new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/BestScore"))));
                             s.writeObject(Long.toString(p.getJoeur().getScoreActuel()));
                             s.close();
@@ -84,6 +97,14 @@ public class FinController {
 
         if(!trv)
         {
+            if(p.getJoeur().getScoreActuel()>0)
+            {
+                morebestscore.setText("Confratulations !! you get more than your best score");
+                if(p.getJoeur().getScoreActuel()>best_score)
+                {
+                    morebestscore.setText("Confratulations !! you are the best score");
+                }
+            }
             p.getJoeur().getUser().set_meilleur_score(p.getJoeur().getScoreActuel());
             list_users[i]=p.getJoeur().getUser() ;
         }
@@ -103,6 +124,36 @@ public class FinController {
             throw new RuntimeException(e);
         }
         score.setText(String.valueOf(p.getJoeur().getScoreActuel()));
+    }
+
+
+    @FXML
+    public void Newbutton(ActionEvent event)  throws IOException{
+
+
+        //readFile();
+            try{
+                FXMLLoader fxmlLoader = new FXMLLoader(AceuillController.class.getResource("Aceuill.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+             /*  Utilisateur user=new Utilisateur(p.getJoeur().getUser().get_Nom().toUpperCase()) ;
+               Joeur j=new Joeur(user) ;
+               Partie pAcceuil=new Partie(j) */;
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.DECORATED);
+                Scene sc = new Scene(root1) ;
+                stage.setScene(sc);
+                Stage stg = (Stage) newbutton.getScene().getWindow();
+                stg.close();
+                stage.show();
+                stage.setFullScreen(true);
+               // HelloController helloController = fxmlLoader.getController();
+            //    helloController.demare(pAcceuil);
+
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+
     }
 
 }

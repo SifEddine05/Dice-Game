@@ -215,6 +215,7 @@ public class AceuillController {
                         stage.setFullScreen(true);
                         HelloController helloController = fxmlLoader.getController();
                         helloController.demare(pAcceuil);
+                        helloController.monkey();
 
                     } catch(Exception e) {
                         e.printStackTrace();

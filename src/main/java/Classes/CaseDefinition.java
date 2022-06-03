@@ -20,7 +20,7 @@ public class CaseDefinition extends CaseQuestion implements Serializable {
 
     public void SetLose() // si n'est pas reponder aux question
     {
-        System.out.println("LOSSSSSSSS");
+        //System.out.println("LOSSSSSSSS");
         nbr_Points = -10;
         Nb_Case = 0;
     }
@@ -37,9 +37,9 @@ public class CaseDefinition extends CaseQuestion implements Serializable {
             j.modifierCase(val);
             // joeur.modifierCase(val2+joeur.getCaseActuel()) ;
             if (val > 0) {
-                return ("Avancer " + val + " en avant");
+                return ("move forward " + val + " steps");
             } else {
-                return ("Recouler " + val + " en arriere");
+                return ("go back " + val + " steps");
             }
 
             //System.out.println();
@@ -48,10 +48,10 @@ public class CaseDefinition extends CaseQuestion implements Serializable {
             j.modifierCase(Nb_Case);
             j.modifierScore(nbr_Points);
             if (Nb_Case > 0) {
-                return ("Avancer " + Nb_Case + " en avant");
+                return ("move forward " + Nb_Case + " steps");
                 //System.out.println("Avancer " + Nb_Case + " en avant");
             }
-            return "Relancer le De";
+            return "Reroll the dice";
            // return ("Avancer " + Nb_Case + " en avant");
         }
 

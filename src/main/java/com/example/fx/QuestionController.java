@@ -138,8 +138,10 @@ public class QuestionController {
             tok = new StringTokenizer(h, ",");
            // System.out.println("SSSSSSs:" + tok.nextToken());
             NumQues.setText("Definition " + tok.nextToken());
+
             // System.out.println("le numero de la question est :" + tok.nextToken());
             Question.setText("La definition est :" + tok.nextToken());
+            Question.setWrapText(true);
             // System.out.println("la question est :" + tok.nextToken());
             // for (int i = 1; i < 5; i++) {
 
@@ -189,6 +191,7 @@ public class QuestionController {
                 }
                 if(newValue.length()==0)
                 {
+                    Tst=false ;
                     cpt--;
                 }
                 if(cpt==Reponse.length())

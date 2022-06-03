@@ -23,9 +23,9 @@ public class CaseMalus extends Case implements Serializable {
             j.modifierCase(val);
             // joeur.modifierCase(val2+joeur.getCaseActuel()) ;
             if (val > 0) {
-                return ("Avancer " + val + " en avant");
+                return ("move forward " + val + " steps");
             } else {
-                return ("Recouler " + val + " en arriere");
+                return ("go back " + val + " steps");
             }
 
             //System.out.println();
@@ -34,7 +34,7 @@ public class CaseMalus extends Case implements Serializable {
             j.modifierCase(Nb_Case);
             j.modifierScore(nbr_Points);
 
-            return("Reculer " + Nb_Case + " en ariere");
+            return("go back " + Nb_Case + " steps");
         }
 
       //  System.out.println("Reculer " + Nb_Case + " en ariere");

@@ -112,17 +112,17 @@
                                 <Image url="@123.PNG" />
                             </image>
                         </ImageView>
-                        <Label layoutX="95.0" layoutY="21.0" prefHeight="36.0" prefWidth="111.0" text="Score" textAlignment="RIGHT" textFill="WHITE">
+                        <Label layoutX="95.0" layoutY="14.0" prefHeight="36.0" prefWidth="111.0" text="Score" textAlignment="RIGHT" textFill="WHITE">
                             <font>
                                 <Font name="System Bold Italic" size="30.0" />
                             </font>
                         </Label>
-                        <Label layoutX="100.0" layoutY="104.0" prefHeight="45.0" prefWidth="87.0" text="Case" textAlignment="RIGHT" textFill="WHITE">
+                        <Label layoutX="107.0" layoutY="86.0" prefHeight="45.0" prefWidth="87.0" text="Case" textAlignment="RIGHT" textFill="WHITE">
                             <font>
                                 <Font name="System Bold Italic" size="30.0" />
                             </font>
                         </Label>
-                        <AnchorPane layoutX="79.0" layoutY="149.0">
+                        <AnchorPane layoutX="82.0" layoutY="136.0">
                             <children>
                                 <ImageView fitHeight="35.0" fitWidth="102.0" layoutX="17.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -136,7 +136,7 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="92.0" layoutY="68.0">
+                        <AnchorPane layoutX="99.0" layoutY="50.0">
                             <children>
                                 <ImageView fitHeight="35.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -150,15 +150,19 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                      <Label fx:id="Info" alignment="CENTER" layoutX="23.0" layoutY="193.0" prefHeight="42.0" prefWidth="255.0" text="&quot;Start the Game ...&quot;" textAlignment="CENTER" textFill="#e80b0b">
+                      <Label fx:id="Info" alignment="CENTER" layoutX="14.0" layoutY="180.0" prefHeight="42.0" prefWidth="255.0" text="&quot;Start the Game ...&quot;" textAlignment="CENTER" textFill="#e80b0b">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+                      <Label fx:id="Info4" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="211.0" prefHeight="23.0" prefWidth="237.0" text="Text" textFill="#060dd7" visible="false">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
                     </children>
                 </AnchorPane>
                 <Button fx:id="quit" mnemonicParsing="false" onAction="#quitter" style="-fx-background-color: #fdbd76;" textFill="WHITE" />
-                <Label fx:id="Info4" prefHeight="42.0" prefWidth="181.0" text="Text" visible="false" />
             </children>
         </VBox>
     </left>

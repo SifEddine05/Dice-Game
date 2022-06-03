@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="question" prefHeight="487.0" prefWidth="486.0" style="-fx-background-color: transparent;" stylesheets="@bground.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fx.QuestionController">
    <children>
       <Label fx:id="NumQues" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="63.0" layoutY="29.0" prefHeight="43.0" prefWidth="353.0" text="Definition" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
@@ -16,7 +15,7 @@
             <Font name="Arial Black" size="33.0" />
          </font>
       </Label>
-      <Label fx:id="Question" alignment="TOP_LEFT" layoutX="71.0" layoutY="116.0" prefHeight="105.0" prefWidth="353.0" text="la definition" textFill="WHITE">
+      <Label fx:id="Question" alignment="TOP_LEFT" layoutX="71.0" layoutY="116.0" prefHeight="105.0" prefWidth="353.0" text="la definition">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

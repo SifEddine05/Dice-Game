@@ -16,7 +16,7 @@ public class CaseDepart extends Case implements Serializable {
         afficher();
         j.modifierScore(nbr_Points);
         j.modifierCase(Nb_Case);
-        return ("Relancer le De") ;
+        return ("Reroll the dice") ;
         // System.out.println("avancer de "+val+" case en avant");
     }
 }

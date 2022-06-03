@@ -123,7 +123,8 @@ public class HelloController {
 
     private int num_case_actuel ;
     private static  Boolean Fin =false;
-    Alert alert= new Alert(Alert.AlertType.NONE) ;
+    Alert alert= new Alert(Alert.AlertType.WARNING) ;
+    Alert Err = new Alert(Alert.AlertType.ERROR,"La case est ") ;
     public static void setFin()
     {
         Fin=true ;
@@ -298,8 +299,9 @@ public void openNewwindowImage()
             num_case_actuel=valjoeur ;
             return true;
         } else {
-            Info4.setVisible(true);
-            Info4.setText("la case est errone cliquer sur la case correct");
+            Err();
+          //  Info4.setVisible(true);
+            //Info4.setText("la case est errone cliquer sur la case correct");
             //  System.out.println("la case est errone cliquer sur une autre case ");
 
             return false;
@@ -327,14 +329,15 @@ public void openNewwindowImage()
         }
     }
     void Action(ActionEvent e) {
-//        imgv.setVisible(false);
+//        imgv.setVisible(false)
+//
         Case Plateau[] = p.getPlateau();
         Joeur j = p.getJoeur();
         Object node = e.getSource(); //returns the object that generated the event
         System.out.println(node instanceof Button); //prints true. demonstrates the source is a Button
         //since the returned object is a Button you can cast it to one
         Button b = (Button) node;
-
+        //p.setBtn(b) ;
         //ImageView imgv = ((ImageView)b.getGraphic()) ;
 /*ImageView imgv = new ImageView() ;
         imgv.setFitWidth(56);
@@ -366,9 +369,10 @@ public void openNewwindowImage()
        }*/
 
         //b.graphicProperty().setValue(monkey);
-
-        System.out.println("val "+valjoeur);
+       // if(valjoeur==num_case_actuel)
+    //    System.out.println("val "+valjoeur);
         if (Test(valjoeur) ) {
+            monkey.setVisible(true);
             Node n =  b.getGraphic();
             PositionMonkey(valjoeur);
            // System.out.println("color :"+Plateau[valjoeur].getColor()=="Pink" ) ;
@@ -397,19 +401,19 @@ public void openNewwindowImage()
                         String ss = Plateau[j.getCaseActuel()].Action(j);
                         Info.setText(ss);
                         p.setLastmsg(ss);
-                        Info4.setVisible(false);
+                       Info4.setVisible(false);
                         Info3.setText(""+num_case_actuel);
                         Info2.setText(""+j.getScoreActuel());
                         if(Test)
                         {
 
                             Info4.setVisible(true);
-                            Info4.setText("Votre Reponse est juste");
+                            Info4.setText("Your answer is right");
                         }
                         else
                         {
                             Info4.setVisible(true);
-                            Info4.setText("Votre Reponse est fausse");
+                            Info4.setText("Your answer is right");
                         }
 
                 } else if (Plateau[valjoeur].getColor().equals("Pink")) {
@@ -427,12 +431,12 @@ public void openNewwindowImage()
                     if(Testimg)
                     {
                         Info4.setVisible(true);
-                        Info4.setText("Votre Reponse est juste");
+                        Info4.setText("Your answer is right");
                     }
                     else
                     {
                         Info4.setVisible(true);
-                        Info4.setText("Votre Reponse est fausse");
+                        Info4.setText("Your answer is right");
                     }
                     
                 } else
@@ -470,7 +474,7 @@ public void openNewwindowImage()
                 }
 
             }
-            if(Info.getText().equals("Relancer le De"))
+            if(Info.getText().equals("Reroll the dice"))
             {
                 Lancer_De.setDisable(false);
             }
@@ -942,7 +946,6 @@ public void openNewwindowImage()
         //imgv.setPreserveRatio(true);
       /*  gridpane.add(imageView , 6, 6 );
         gridpane.add(btn, 6, 6);*/
-
         //bk.setPosition();
         //System.out.println("SS :"+bk.get());
         //i++;*/
@@ -1002,6 +1005,20 @@ public void openNewwindowImage()
             valjoeur = sc.nextInt();
         }
     }*/
+    void Err ()
+    {
+        Err.setTitle("False box");
+        Err.setContentText("The box is wrong please choose the right box");
+        Err.show();
+    }
+    void monkey ()
+    {
+       monkey.setVisible(false);
+       alert.setTitle("Your Current Box ");
+       alert.setContentText("You must click on the box \n<<"+ p.getJoeur().getCaseActuel()+">>\n to contiunue the game");
+       alert.show();
+
+    }
     void demare (Partie partie)
     {
         /*File file = new File("src/main/resources/Img/play.PNG") ;
@@ -1020,13 +1037,12 @@ public void openNewwindowImage()
         Case Plateau[] =p.getPlateau();
         CreePlateau(Plateau);
         Info.setText(p.getLastmsg());
-        if(Info.getText().equals("Throw dice")) Lancer_De.setDisable(false);
-        else Lancer_De.setDisable(true);
+        if(Info.getText().equals("Throw dice") || Info.getText().equals("Reroll the dice") ) Lancer_De.setDisable(false);
+         else Lancer_De.setDisable(true);
         Info3.setText(""+num_case_actuel);
         Info2.setText(""+p.getJoeur().getScoreActuel());
-        PositionMonkey(num_case_actuel);
-        monkey.setX(28);
-        monkey.setY(140);
+        /*monkey.setX(28);
+        monkey.setY(140);*/
         //Button list = (Button) gridpane.getChildren();
       //  gridpane.get()
 
@@ -1074,7 +1090,6 @@ public void openNewwindowImage()
             sc.setFill(Color.TRANSPARENT);
             QuitterController quitterController = fxmlLoader.getController() ;
             quitterController.setP(p);
-           // quitterController.setJeu(jeu);
             stage.setScene(sc);
             stage.show();
 
